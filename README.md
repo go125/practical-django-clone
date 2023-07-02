@@ -22,7 +22,7 @@ cd src
 pip install -r requirements.txt
 ```
 
-## Djangoプロジェクトの作成(初回起動時)
+### Djangoプロジェクトの作成(初回起動時)
 
 ```
 django-admin startproject djangosnippets
@@ -44,6 +44,28 @@ python manage.py runserver 0.0.0.0:8081
 ```
 python manage.py createsuperuser
 ```
+
+### Djangoアプリケーションの作成
+
+- settings.pyに"snippets.apps.SnippetsConfig"を忘れずに追加する
+
+```
+python manage.py startapp snippets
+```
+
+### ルーティングの実施
+
+- コンテンツを仮置きして、ルーティングを先に行うのが定石である
+
+### Modelの作成
+
+- DBへの反映(migrate)を忘れずに実施する
+
+### テンプレートの設置
+
+- "snippets/static/snippets/css/style.css"を作成する
+- base.htmlを作成する
+  - base.htmlの作成場所に注意する
 
 ## pgAdminの設定
 
