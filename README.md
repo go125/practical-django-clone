@@ -31,7 +31,7 @@ cd djangosnippets
 
 - DBと言語の設定を実施する
 - 以下のコマンドで初期設定が完了したことを確認する
-  - [こちら](localhost:8081)からアクセス
+  - 「localhost:8081」からアクセス
 
 ```
 python manage.py migrate
@@ -75,6 +75,6 @@ python manage.py startapp accounts
 
 ## pgAdminの設定
 
-- [こちら](localhost:8080)からアクセス
+- 「localhost:8080」からアクセス
     - メールアドレス：example@example.com、パスワード：password
 - ホスト名が「service_postgres」であることに注意すると接続できる
