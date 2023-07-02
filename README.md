@@ -67,6 +67,12 @@ python manage.py startapp snippets
 - base.htmlを作成する
   - base.htmlの作成場所に注意する
 
+### ユーザー認証の作成
+
+```
+python manage.py startapp accounts
+```
+
 ## pgAdminの設定
 
 - [こちら](localhost:8080)からアクセス
