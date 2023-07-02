@@ -1,0 +1,45 @@
+version: '3'
+services:
+  python3:
+    build: .
+    container_name: 'python3.9'
+    working_dir: '/root/'
+    tty: true
+    volumes:
+      - ./src:/root/src
+    ports:
+      - "8081:8081" # ホストマシンのポート8081を、docker内のポート8081に接続する
+    depends_on:
+      - service_postgres
+
+  service_postgres:
+    image: postgres:14
+    container_name: container_postgres
+    environment: 
+      POSTGRES_USER: postgres # TODO: dotenvの設定
+      POSTGRES_PASSWORD: postgres # TODO: dotenvの設定
+      POSTGRES_DB: postgres # TODO: dotenvの設定
+    ports: 
+      - "5432:5432"
+    volumes:
+      - volume_postgres:/var/lib/postgresql/data
+      - ./postgres_service/initdb.d:/docker-entrypoint-initdb.d
+
+  service_pgadmin:
+    image: dpage/pgadmin4:6.11
+    container_name: container_pgadmin
+    ports:
+      - 8080:80
+    volumes:
+      - volume_pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: example@example.com # TODO: dotenvの設定
+      PGADMIN_DEFAULT_PASSWORD: password # TODO: dotenvの設定
+    depends_on:
+      - service_postgres
+
+volumes:
+  volume_postgres:
+    name: vpg
+  volume_pgadmin:
+    name: vpga
