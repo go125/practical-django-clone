@@ -78,3 +78,9 @@ python manage.py startapp accounts
 - 「localhost:8080」からアクセス
     - メールアドレス：example@example.com、パスワード：password
 - ホスト名が「service_postgres」であることに注意すると接続できる
+
+## テスト用データの作成
+
+```
+python manage.py insert_dummy_data
+```
