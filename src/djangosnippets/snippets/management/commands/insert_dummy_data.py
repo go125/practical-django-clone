@@ -2,7 +2,7 @@ import random
 
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
-from snippets.models import Snippet
+from snippets.models import Snippet, Tag
 
 class Command(BaseCommand):
     help = 'Insert dummy users and snippets.'
@@ -21,3 +21,13 @@ class Command(BaseCommand):
                 description='こんにちは、世界',
                 created_by=User.objects.get(id=1))
             snippet.save()
+            # タグの追加
+            if i % 4 == 0:
+                snippet.tag.add(Tag.objects.get(id=1))
+            elif i % 4 == 1:
+                snippet.tag.add(Tag.objects.get(id=2))
+            elif i % 4 == 2:
+                snippet.tag.add(Tag.objects.get(id=1))
+                snippet.tag.add(Tag.objects.get(id=2))
+            else:
+                pass

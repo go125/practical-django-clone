@@ -24,6 +24,9 @@
             <th>
                 タイトル
             </th>
+            <th>
+                タグ
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +42,9 @@
                 <a href="{% url 'snippet_detail' snippet.id %}">
                     {{ snippet.title }}
                 </a>
+            </th>
+            <th>
+                {% for tag in snippet.tag.all %}{{ tag }} {% endfor %}
             </th>
         </tr>
         {% endfor %}
